@@ -12,8 +12,8 @@ import { RhComponent } from "./optimizationPattern/rh/rh.component";
 import { FrontComponent } from "./components/front/front.component";
 import { AdminComponent } from "./components/admin/admin.component";
 import { MasterDetailsComponent } from "./cv/master-details/master-details.component";
-import { detailsCvResolverResolver } from "./cv/details-cv-resolver.resolver";
-import { listeCvResolver } from "./cv/liste-cv.resolver";
+import { detailsCvResolverResolver } from "./cv/resolvers/details-cv-resolver.resolver";
+import { listeCvResolver } from "./cv/resolvers/liste-cv.resolver";
 import { canLeaveTodoGuard } from "./todo/guards/can-leave-todo.guard";
 
 const routes: Route[] = [

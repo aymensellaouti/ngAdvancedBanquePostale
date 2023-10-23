@@ -1,7 +1,7 @@
 import { ResolveFn } from '@angular/router';
-import { Cv } from './model/cv';
+import { Cv } from '../model/cv';
 import { inject } from '@angular/core';
-import { CvService } from './services/cv.service';
+import { CvService } from '../services/cv.service';
 import { catchError, of } from 'rxjs';
 import { ToastrService } from 'ngx-toastr';
 
