@@ -45,11 +45,12 @@ import { EmbaucheComponent } from './cv/embauche/embauche.component';
 import { CvCardComponent } from './cv/cv-card/cv-card.component';
 import { RhComponent } from './optimizationPattern/rh/rh.component';
 import { UserListComponent } from './optimizationPattern/user-list/user-list.component';
-import { LoggerInjectionToken, TodoInjectionToken } from './injection Tokens/injection.token';
-import { provideLoggerService, provideTodoService } from './Provider factories/custom.provider-factory';
+import { LoggerInjectionToken, TodoInjectionToken, UUID_TOKEN } from './injection Tokens/injection.token';
+import { provideLoggerService /*, provideTodoService */} from './Provider factories/custom.provider-factory';
 import { LoggerService } from './services/logger.service';
 import { TodoService } from './todo/service/todo.service';
-
+import { Logger2Service } from './services/logger2.service';
+import { v4 as uuidv4 } from 'uuid';
 @NgModule({
   declarations: [
     AppComponent,
@@ -97,6 +98,20 @@ import { TodoService } from './todo/service/todo.service';
   ],
   providers: [
     AuthInterceptorProvider,
+    {
+      provide: LoggerInjectionToken,
+      useClass: Logger2Service,
+      multi: true,
+    },
+    {
+      provide: LoggerInjectionToken,
+      useClass: LoggerService,
+      multi: true,
+    },
+    {
+      provide: UUID_TOKEN,
+      useValue: uuidv4,
+    },
   ],
   bootstrap: [AppComponent],
 })

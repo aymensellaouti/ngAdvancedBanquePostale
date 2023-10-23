@@ -8,3 +8,5 @@ export const TodoInjectionToken = new InjectionToken<TodoService>(
 export const LoggerInjectionToken = new InjectionToken<LoggerService>(
   'LOGGER_INJECTION_TOKEN'
 );
+
+export const UUID_TOKEN = new InjectionToken<() => string>('UUID_TOKEN');
