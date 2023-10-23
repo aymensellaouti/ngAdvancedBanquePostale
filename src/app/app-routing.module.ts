@@ -14,6 +14,8 @@ import { FrontComponent } from "./components/front/front.component";
 import { AdminComponent } from "./components/admin/admin.component";
 import { MasterDetailsComponent } from "./cv/master-details/master-details.component";
 import { detailsCvResolverResolver } from "./cv/details-cv-resolver.resolver";
+import { listeCvResolver } from "./cv/liste-cv.resolver";
+import { canLeaveTodoGuard } from "./todo/can-leave-todo.guard";
 
 const routes: Route[] = [
   { path: 'login', component: LoginComponent },
@@ -21,6 +23,9 @@ const routes: Route[] = [
   {
     path: 'cv',
     component: CvComponent,
+    resolve: {
+      cvs: listeCvResolver,
+    },
   },
   {
     path: 'cv/list',
@@ -28,25 +33,32 @@ const routes: Route[] = [
     children: [{ path: ':id', component: DetailsCvComponent }],
   },
   { path: 'cv/add', component: AddCvComponent, canActivate: [AuthGuard] },
-  { path: 'cv/:id', component: DetailsCvComponent,
+  {
+    path: 'cv/:id',
+    component: DetailsCvComponent,
     resolve: {
-      cv: detailsCvResolverResolver
+      cv: detailsCvResolverResolver,
     },
     data: {
-      'message': 'Bonjour la banque Postale'
-    }
+      message: 'Bonjour la banque Postale',
+    },
   },
   {
     path: '',
     component: FrontComponent,
     children: [
-      { path: 'todo', component: TodoComponent },
+      {
+        path: 'todo',
+        component: TodoComponent,
+        canDeactivate: [canLeaveTodoGuard],
+      },
       { path: 'word', component: MiniWordComponent },
     ],
   },
   {
     path: 'admin',
     component: AdminComponent,
+    canActivateChild: [],
     children: [{ path: 'color', component: ColorComponent }],
   },
   { path: '**', component: NF404Component },

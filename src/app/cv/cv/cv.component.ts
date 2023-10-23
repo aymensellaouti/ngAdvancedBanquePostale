@@ -6,6 +6,8 @@ import { CvService } from "../services/cv.service";
 import { TodoService } from "src/app/todo/service/todo.service";
 import { CONSTANTES } from "src/config/const.config";
 import { FakeCvService } from "../services/fake-cv.service";
+import { Observable, map } from "rxjs";
+import { ActivatedRoute } from "@angular/router";
 
 @Component({
   selector: "app-cv",
@@ -17,7 +19,7 @@ import { FakeCvService } from "../services/fake-cv.service";
   }]
 })
 export class CvComponent {
-  cvs: Cv[] = [];
+  cvs$: Observable<Cv[]>;
   nbClickItem = 0;
   /*   selectedCv: Cv | null = null; */
   date = new Date();
@@ -26,20 +28,13 @@ export class CvComponent {
     private logger: LoggerService,
     private toastr: ToastrService,
     private cvService: CvService,
-    private todoService: TodoService
+    private todoService: TodoService,
+    private activatedRoute: ActivatedRoute,
   ) {
     this.todoService.logTodos();
-    this.cvService.getCvs().subscribe({
-      next: (cvs) => {
-        this.cvs = cvs;
-      },
-      error: () => {
-        this.cvs = this.cvService.getFakeCvs();
-        this.toastr.error(`
-          Attention!! Les données sont fictives, problème avec le serveur.
-          Veuillez contacter l'admin.`);
-      },
-    });
+    this.cvs$ = this.activatedRoute.data.pipe(
+      map( data => data['cvs'])
+    );
     this.logger.logger("je suis le cvComponent");
     this.toastr.info("Bienvenu dans notre CvTech");
     this.cvService.selectCv$.subscribe(() => this.nbClickItem++);

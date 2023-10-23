@@ -2,13 +2,12 @@
   <div class="col">
     <div class="alert alert-warning">
       {{ date | date : "full" | uppercase }}
-
       <p>Nombre de cvs sélectionnés : {{ nbClickItem }}</p>
       <!--       <pre>
         {{1 | btc2usd}} / {{1 | btc2usd: false}} /
       </pre> -->
     </div>
-    <app-list [cvs]="cvs"></app-list>
+    <app-list [cvs]="cvs$ | async"></app-list>
   </div>
   <div class="col">
     <app-cv-card></app-cv-card>
