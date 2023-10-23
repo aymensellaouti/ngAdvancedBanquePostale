@@ -1,5 +1,5 @@
 import { CanDeactivateFn } from '@angular/router';
-import { TodoComponent } from './todo/todo.component';
+import { TodoComponent } from '../todo/todo.component';
 
 export const canLeaveTodoGuard: CanDeactivateFn<TodoComponent> = (
   component,

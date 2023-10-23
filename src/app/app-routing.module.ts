@@ -1,6 +1,5 @@
 import { NgModule } from "@angular/core";
 import { RouterModule, Route } from "@angular/router";
-import { TodoComponent } from "./todo/todo/todo.component";
 import { MiniWordComponent } from "./directives/mini-word/mini-word.component";
 import { ColorComponent } from "./components/color/color.component";
 import { LoginComponent } from "./auth/login/login.component";
@@ -15,7 +14,7 @@ import { AdminComponent } from "./components/admin/admin.component";
 import { MasterDetailsComponent } from "./cv/master-details/master-details.component";
 import { detailsCvResolverResolver } from "./cv/details-cv-resolver.resolver";
 import { listeCvResolver } from "./cv/liste-cv.resolver";
-import { canLeaveTodoGuard } from "./todo/can-leave-todo.guard";
+import { canLeaveTodoGuard } from "./todo/guards/can-leave-todo.guard";
 
 const routes: Route[] = [
   { path: 'login', component: LoginComponent },
@@ -47,11 +46,6 @@ const routes: Route[] = [
     path: '',
     component: FrontComponent,
     children: [
-      {
-        path: 'todo',
-        component: TodoComponent,
-        canDeactivate: [canLeaveTodoGuard],
-      },
       { path: 'word', component: MiniWordComponent },
     ],
   },
@@ -61,7 +55,7 @@ const routes: Route[] = [
     canActivateChild: [],
     children: [{ path: 'color', component: ColorComponent }],
   },
-  { path: '**', component: NF404Component },
+  // { path: '**', component: NF404Component },
 ];
 
 @NgModule({
