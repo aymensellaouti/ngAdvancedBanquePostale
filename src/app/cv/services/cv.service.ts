@@ -26,6 +26,17 @@ export class CvService {
 
   /**
    *
+   * Emet le cv sélectionné à tous les observateurs
+   *
+   * @param cv: Cv
+   *
+   */
+  selectCv(cv: Cv) {
+    this.selectCvSubject.next(cv);
+  }
+
+  /**
+   *
    * Retourne un liste fictive de cvs
    *
    * @returns CV[]
@@ -99,16 +110,5 @@ export class CvService {
       return true;
     }
     return false;
-  }
-
-  /**
-   *
-   * Emet le cv sélectionné à tous les observateurs
-   *
-   * @param cv: Cv
-   *
-   */
-  selectCv(cv: Cv) {
-    this.selectCvSubject.next(cv);
   }
 }

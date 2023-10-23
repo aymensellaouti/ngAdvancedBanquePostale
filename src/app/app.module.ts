@@ -30,8 +30,6 @@ import { RainbowDirective } from './directives/rainbow.directive';
 import { Btc2usdPipe } from './pipes/btc2usd.pipe';
 import { AppRoutingModule } from './app-routing.module';
 import { NavbarComponent } from './components/navbar/navbar.component';
-import { FrontComponent } from './templates/front/front.component';
-import { AdminComponent } from './templates/admin/admin.component';
 import { NF404Component } from './components/nf404/nf404.component';
 import { TestFormComponent } from './components/test-form/test-form.component';
 import { LoginComponent } from './auth/login/login.component';
@@ -51,6 +49,9 @@ import { LoggerService } from './services/logger.service';
 import { TodoService } from './todo/service/todo.service';
 import { Logger2Service } from './services/logger2.service';
 import { v4 as uuidv4 } from 'uuid';
+import { AdminComponent } from './components/admin/admin.component';
+import { FrontComponent } from './components/front/front.component';
+import { MasterDetailsComponent } from './cv/master-details/master-details.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -78,8 +79,6 @@ import { v4 as uuidv4 } from 'uuid';
     Btc2usdPipe,
     TodoComponent,
     NavbarComponent,
-    FrontComponent,
-    AdminComponent,
     NF404Component,
     TestFormComponent,
     LoginComponent,
@@ -87,6 +86,9 @@ import { v4 as uuidv4 } from 'uuid';
     TestHttpComponent,
     RhComponent,
     UserListComponent,
+    AdminComponent,
+    FrontComponent,
+    MasterDetailsComponent
   ],
   imports: [
     BrowserModule,
