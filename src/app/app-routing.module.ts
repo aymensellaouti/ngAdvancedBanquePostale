@@ -13,6 +13,7 @@ import { RhComponent } from "./optimizationPattern/rh/rh.component";
 import { FrontComponent } from "./components/front/front.component";
 import { AdminComponent } from "./components/admin/admin.component";
 import { MasterDetailsComponent } from "./cv/master-details/master-details.component";
+import { detailsCvResolverResolver } from "./cv/details-cv-resolver.resolver";
 
 const routes: Route[] = [
   { path: 'login', component: LoginComponent },
@@ -27,7 +28,14 @@ const routes: Route[] = [
     children: [{ path: ':id', component: DetailsCvComponent }],
   },
   { path: 'cv/add', component: AddCvComponent, canActivate: [AuthGuard] },
-  { path: 'cv/:id', component: DetailsCvComponent },
+  { path: 'cv/:id', component: DetailsCvComponent,
+    resolve: {
+      cv: detailsCvResolverResolver
+    },
+    data: {
+      'message': 'Bonjour la banque Postale'
+    }
+  },
   {
     path: '',
     component: FrontComponent,

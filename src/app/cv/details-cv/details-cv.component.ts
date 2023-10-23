@@ -5,7 +5,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { APP_ROUTES } from '../../../config/routes.config';
 import { AuthService } from '../../auth/services/auth.service';
-import { EMPTY, Observable, catchError, switchMap } from 'rxjs';
+import { EMPTY, Observable, catchError, map, switchMap, tap } from 'rxjs';
 
 @Component({
   selector: 'app-details-cv',
@@ -21,13 +21,19 @@ export class DetailsCvComponent {
     private toastr: ToastrService,
     public authService: AuthService
   ) {
-    this.cv$ = this.activatedRoute.params.pipe(
-      switchMap(params => this.cvService.getCvById(+params['id'])),
-      catchError(e => {
-        this.router.navigate([APP_ROUTES.cv]);
-        return EMPTY;
-      })
+    this.cv$ = this.activatedRoute.data.pipe(
+      tap((data) => {
+        console.log({data});
+      }),
+      map((data) => data['cv'])
     );
+    // = this.activatedRoute.params.pipe(
+    //   switchMap(params => this.cvService.getCvById(+params['id'])),
+    //   catchError(e => {
+    //     this.router.navigate([APP_ROUTES.cv]);
+    //     return EMPTY;
+    //   })
+    // );
   }
   deleteCv(cv: Cv) {
     this.cvService.deleteCvById(cv.id).subscribe({
