@@ -1,13 +1,20 @@
-import { Component } from "@angular/core";
+import { Component, Inject } from "@angular/core";
 import { Cv } from "../model/cv";
 import { LoggerService } from "../../services/logger.service";
 import { ToastrService } from "ngx-toastr";
 import { CvService } from "../services/cv.service";
-import { EMPTY, Observable, catchError, of } from "rxjs";
+import { TodoService } from "src/app/todo/service/todo.service";
+import { CONSTANTES } from "src/config/const.config";
+import { FakeCvService } from "../services/fake-cv.service";
+
 @Component({
   selector: "app-cv",
   templateUrl: "./cv.component.html",
   styleUrls: ["./cv.component.css"],
+  providers: [{
+    provide: CvService,
+    useClass: CONSTANTES.fakeCvService ? FakeCvService: CvService
+  }]
 })
 export class CvComponent {
   cvs: Cv[] = [];
@@ -18,8 +25,10 @@ export class CvComponent {
   constructor(
     private logger: LoggerService,
     private toastr: ToastrService,
-    private cvService: CvService
+    private cvService: CvService,
+    private todoService: TodoService
   ) {
+    this.todoService.logTodos();
     this.cvService.getCvs().subscribe({
       next: (cvs) => {
         this.cvs = cvs;

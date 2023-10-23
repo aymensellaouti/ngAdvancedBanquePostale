@@ -45,6 +45,10 @@ import { EmbaucheComponent } from './cv/embauche/embauche.component';
 import { CvCardComponent } from './cv/cv-card/cv-card.component';
 import { RhComponent } from './optimizationPattern/rh/rh.component';
 import { UserListComponent } from './optimizationPattern/user-list/user-list.component';
+import { LoggerInjectionToken, TodoInjectionToken } from './injection Tokens/injection.token';
+import { provideLoggerService, provideTodoService } from './Provider factories/custom.provider-factory';
+import { LoggerService } from './services/logger.service';
+import { TodoService } from './todo/service/todo.service';
 
 @NgModule({
   declarations: [
@@ -81,7 +85,7 @@ import { UserListComponent } from './optimizationPattern/user-list/user-list.com
     TestObservableComponent,
     TestHttpComponent,
     RhComponent,
-    UserListComponent
+    UserListComponent,
   ],
   imports: [
     BrowserModule,
@@ -91,7 +95,9 @@ import { UserListComponent } from './optimizationPattern/user-list/user-list.com
     AppRoutingModule,
     HttpClientModule,
   ],
-  providers: [AuthInterceptorProvider],
+  providers: [
+    AuthInterceptorProvider,
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
