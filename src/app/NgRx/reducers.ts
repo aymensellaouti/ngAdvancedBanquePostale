@@ -4,5 +4,5 @@ import { appInitialState } from ".";
 
 export const initStateReducer = createReducer(
   appInitialState,
-  on(intitAppAction, (state) => ({ ...state, appName: 'Banque Postale' }))
+  on(intitAppAction, (state, ) => ({ ...state, appName: 'Banque Postale' }))
 );

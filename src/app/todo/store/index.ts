@@ -5,6 +5,6 @@ export interface TodoState {
   todos: Todo[]
 }
 
-export const initalTodoState = {
-  todos: []
-}
+export const initalTodoState: TodoState = {
+  todos: [],
+};
