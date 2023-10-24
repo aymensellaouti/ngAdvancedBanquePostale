@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, isDevMode } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms';
@@ -43,6 +43,9 @@ import { TestCDComponent } from './components/test-cd/test-cd.component';
 import { TestCDFilsComponent } from './components/test-cdfils/test-cdfils.component';
 import { NombreListComponent } from './components/nombre-list/nombre-list.component';
 import { CarrePipe } from './pipes/carre.pipe';
+import { StoreModule } from '@ngrx/store';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { initStateReducer } from './NgRx/reducers';
 
 @NgModule({
   declarations: [
@@ -74,7 +77,6 @@ import { CarrePipe } from './pipes/carre.pipe';
     TestCDFilsComponent,
     NombreListComponent,
     CarrePipe,
-
   ],
   imports: [
     BrowserModule,
@@ -82,7 +84,9 @@ import { CarrePipe } from './pipes/carre.pipe';
     BrowserAnimationsModule, // required animations module
     ToastrModule.forRoot(), // ToastrModule added
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    StoreModule.forRoot({ ux: initStateReducer }, {}),
+    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() }),
   ],
   providers: [
     AuthInterceptorProvider,
