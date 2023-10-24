@@ -4,6 +4,7 @@ import { TodoRoutingModule } from "./todo-routing.module";
 import { FormsModule } from "@angular/forms";
 import { CommonModule } from "@angular/common";
 import { StoreModule } from "@ngrx/store";
+import { todoReducer } from "./store/reducers";
 
 @NgModule({
   declarations: [TodoComponent],
@@ -11,7 +12,7 @@ import { StoreModule } from "@ngrx/store";
     TodoRoutingModule,
     FormsModule,
     CommonModule,
-    // StoreModule.forFeature('todo', todoReducer)
+    StoreModule.forFeature('todo', todoReducer)
   ],
 })
 export class TodoModule {}
