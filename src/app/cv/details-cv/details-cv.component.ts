@@ -22,9 +22,9 @@ export class DetailsCvComponent {
     public authService: AuthService
   ) {
     this.cv$ = this.activatedRoute.data.pipe(
-      tap((data) => {
-        console.log({data});
-      }),
+      // tap((data) => {
+      //   console.log({data});
+      // }),
       map((data) => data['cv'])
     );
     // = this.activatedRoute.params.pipe(

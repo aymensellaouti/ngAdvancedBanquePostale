@@ -1,6 +1,6 @@
 import { Component, OnDestroy } from '@angular/core';
 import { Cv } from '../model/cv';
-import { Observable, Subject, Subscription, takeUntil } from 'rxjs';
+import { Observable, Subject, Subscription, takeUntil, tap } from 'rxjs';
 import { CvService } from '../services/cv.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { takeUntilDestroyed } from "@angular/core/rxjs-interop"
@@ -19,7 +19,10 @@ export class MasterDetailsComponent implements OnDestroy  {
     // this.subscription =
     this.cvService.selectCv$
       // .pipe(takeUntilDestroyed())
-      .pipe(takeUntil(this.signal$))
+      .pipe(
+        // tap(data => console.log(data)),
+        takeUntil(this.signal$),
+      )
       .subscribe((cv) =>
         this.router.navigate([cv.id], { relativeTo: this.acr })
     );
