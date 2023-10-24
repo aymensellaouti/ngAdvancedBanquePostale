@@ -10,14 +10,14 @@ import { listeCvResolver } from './resolvers/liste-cv.resolver';
 
 const routes: Routes = [
   {
-    path: 'cv',
+    path: '',
     component: CvComponent,
     resolve: {
       cvs: listeCvResolver,
     },
   },
   {
-    path: 'cv/list',
+    path: 'list',
     component: MasterDetailsComponent,
     children: [
       {
@@ -29,9 +29,9 @@ const routes: Routes = [
       },
     ],
   },
-  { path: 'cv/add', component: AddCvComponent, canActivate: [AuthGuard] },
+  { path: 'add', component: AddCvComponent, canActivate: [AuthGuard] },
   {
-    path: 'cv/:id',
+    path: ':id',
     component: DetailsCvComponent,
     resolve: {
       cv: detailsCvResolverResolver,

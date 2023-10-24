@@ -7,7 +7,7 @@ import { canLeaveTodoGuard } from "./guards/can-leave-todo.guard";
   imports: [
     RouterModule.forChild([
       {
-        path: 'todo',
+        path: '',
         component: TodoComponent,
         canDeactivate: [canLeaveTodoGuard],
       },

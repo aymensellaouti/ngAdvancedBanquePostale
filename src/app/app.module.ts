@@ -39,7 +39,10 @@ import { Logger2Service } from './services/logger2.service';
 import { v4 as uuidv4 } from 'uuid';
 import { AdminComponent } from './components/admin/admin.component';
 import { FrontComponent } from './components/front/front.component';
-import { CvModule } from './cv/cv.module';
+import { TestCDComponent } from './components/test-cd/test-cd.component';
+import { TestCDFilsComponent } from './components/test-cdfils/test-cdfils.component';
+import { NombreListComponent } from './components/nombre-list/nombre-list.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -66,6 +69,9 @@ import { CvModule } from './cv/cv.module';
     UserListComponent,
     AdminComponent,
     FrontComponent,
+    TestCDComponent,
+    TestCDFilsComponent,
+    NombreListComponent,
 
   ],
   imports: [
@@ -74,8 +80,7 @@ import { CvModule } from './cv/cv.module';
     BrowserAnimationsModule, // required animations module
     ToastrModule.forRoot(), // ToastrModule added
     AppRoutingModule,
-    HttpClientModule,
-    CvModule
+    HttpClientModule
   ],
   providers: [
     AuthInterceptorProvider,

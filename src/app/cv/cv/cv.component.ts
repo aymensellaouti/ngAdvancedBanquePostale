@@ -1,4 +1,4 @@
-import { Component, Inject } from "@angular/core";
+import { ChangeDetectionStrategy, Component, Inject } from "@angular/core";
 import { Cv } from "../model/cv";
 import { LoggerService } from "../../services/logger.service";
 import { ToastrService } from "ngx-toastr";
@@ -13,6 +13,7 @@ import { ActivatedRoute } from "@angular/router";
   selector: "app-cv",
   templateUrl: "./cv.component.html",
   styleUrls: ["./cv.component.css"],
+  // changeDetection: ChangeDetectionStrategy.Default
   providers: [{
     provide: CvService,
     useClass: CONSTANTES.fakeCvService ? FakeCvService: CvService

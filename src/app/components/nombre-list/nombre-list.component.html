@@ -1,0 +1,4 @@
+<ol>
+  <li *ngFor="let x of nombres">{{x}} {{carre(x)}}</li>
+</ol>
+<input type="number" (change)="add(+monInput.value)" #monInput>

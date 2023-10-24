@@ -1,0 +1,13 @@
+<p>test-cd works!</p>
+
+Message <input type="text" [(ngModel)]="message">
+
+name : <input type="text" [(ngModel)]="user.name">
+age : <input type="text" [(ngModel)]="user.age">
+<app-nombre-list [nombres]="nombres"></app-nombre-list>
+<div class="alert alert-success">
+  <pre>{{user | json}}</pre>
+  message: {{message}}
+</div>
+
+<app-test-cdfils [message]="message" [user]="user"></app-test-cdfils>
