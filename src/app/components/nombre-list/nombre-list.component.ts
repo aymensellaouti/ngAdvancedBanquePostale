@@ -11,9 +11,5 @@ export class NombreListComponent {
   add(x: number) {
     this.nombres.push(x);
   }
-  carre(x: number) {
-    const result = x * x;
-    console.log(x, result);
-    return result;
-  }
+  
 }

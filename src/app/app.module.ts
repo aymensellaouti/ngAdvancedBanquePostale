@@ -42,6 +42,7 @@ import { FrontComponent } from './components/front/front.component';
 import { TestCDComponent } from './components/test-cd/test-cd.component';
 import { TestCDFilsComponent } from './components/test-cdfils/test-cdfils.component';
 import { NombreListComponent } from './components/nombre-list/nombre-list.component';
+import { CarrePipe } from './pipes/carre.pipe';
 
 @NgModule({
   declarations: [
@@ -72,6 +73,7 @@ import { NombreListComponent } from './components/nombre-list/nombre-list.compon
     TestCDComponent,
     TestCDFilsComponent,
     NombreListComponent,
+    CarrePipe,
 
   ],
   imports: [
