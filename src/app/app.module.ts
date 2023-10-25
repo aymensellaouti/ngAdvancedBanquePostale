@@ -48,6 +48,7 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { initStateReducer } from './NgRx/reducers';
 import { ProductsComponent } from './products/products.component';
 import { EffectsModule } from '@ngrx/effects';
+import { ServiceWorkerModule } from '@angular/service-worker';
 
 @NgModule({
   declarations: [
@@ -91,6 +92,12 @@ import { EffectsModule } from '@ngrx/effects';
     StoreModule.forRoot({ ux: initStateReducer }, {}),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() }),
     EffectsModule.forRoot([]),
+    ServiceWorkerModule.register('ngsw-worker.js', {
+      enabled: !isDevMode(),
+      // Register the ServiceWorker as soon as the application is stable
+      // or after 30 seconds (whichever comes first).
+      registrationStrategy: 'registerWhenStable:30000'
+    }),
   ],
   providers: [
     AuthInterceptorProvider,
