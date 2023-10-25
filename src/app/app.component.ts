@@ -64,7 +64,6 @@ export class AppComponent {
       (pushSubscription) => {
         console.log({pushSubscription});
         console.log('Sending to server');
-
         this.http
           .post('https://nest-push-ghxv.vercel.app/notifications', pushSubscription)
           .subscribe((data) => console.log({ data: data }));

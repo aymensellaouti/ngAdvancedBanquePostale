@@ -39,8 +39,9 @@ const routes: Route[] = [
 
 @NgModule({
   imports: [RouterModule.forRoot(routes, {
-    preloadingStrategy: CustomPreloadingStrategy
-  })],
+    preloadingStrategy: CustomPreloadingStrategy,
+    initialNavigation: 'enabledBlocking'
+})],
   exports: [RouterModule],
 })
 export class AppRoutingModule {}
