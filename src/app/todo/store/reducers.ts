@@ -2,11 +2,14 @@
 import { createReducer, on } from '@ngrx/store';
 import { initalTodoState } from '.';
 import { todoActionGroup } from './actions';
-import { v4 as uuidv4 } from 'uuid';
 export const todoReducer = createReducer(
   initalTodoState,
   on(todoActionGroup.addTodo, (state, { todo }) => ({
     ...state,
-    todos: [...state.todos, { ...todo, id: uuidv4() }],
+    todos: [...state.todos, todo ],
+  })),
+  on(todoActionGroup.deleteTodo, (state, { id }) => ({
+    ...state,
+    todos: state.todos.filter(todo => todo.id != id)
   }))
 );
