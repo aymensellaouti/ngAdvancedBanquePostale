@@ -19,6 +19,7 @@ export class TodoComponent {
   isEmptyTodos$: Observable<boolean>;
   todo = new Todo();
   constructor(private todoService: TodoService, private store: Store<AppState>, @Inject(UUID_TOKEN) private uuid: () => string) {
+    this.store.dispatch(todoActionGroup.getTodos());
     this.todo.id = this.uuid();
     this.todos$ = this.store.select(selectAllTodos);
     this.isEmptyTodos$ = this.store.select(isEmptyTodos);

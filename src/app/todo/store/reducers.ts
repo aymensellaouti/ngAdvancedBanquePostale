@@ -11,5 +11,9 @@ export const todoReducer = createReducer(
   on(todoActionGroup.deleteTodo, (state, { id }) => ({
     ...state,
     todos: state.todos.filter(todo => todo.id != id)
-  }))
+  })),
+  on(todoActionGroup.loadedTodos, (state, { todos }) => ({
+    ...state,
+    todos
+  })),
 );

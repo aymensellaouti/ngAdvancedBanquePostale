@@ -47,6 +47,7 @@ import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { initStateReducer } from './NgRx/reducers';
 import { ProductsComponent } from './products/products.component';
+import { EffectsModule } from '@ngrx/effects';
 
 @NgModule({
   declarations: [
@@ -89,6 +90,7 @@ import { ProductsComponent } from './products/products.component';
     HttpClientModule,
     StoreModule.forRoot({ ux: initStateReducer }, {}),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() }),
+    EffectsModule.forRoot([]),
   ],
   providers: [
     AuthInterceptorProvider,
