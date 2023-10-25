@@ -46,6 +46,7 @@ import { CarrePipe } from './pipes/carre.pipe';
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { initStateReducer } from './NgRx/reducers';
+import { ProductsComponent } from './products/products.component';
 
 @NgModule({
   declarations: [
@@ -77,6 +78,7 @@ import { initStateReducer } from './NgRx/reducers';
     TestCDFilsComponent,
     NombreListComponent,
     CarrePipe,
+    ProductsComponent,
   ],
   imports: [
     BrowserModule,
