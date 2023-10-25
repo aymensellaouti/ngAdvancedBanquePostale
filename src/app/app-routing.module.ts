@@ -8,10 +8,12 @@ import { RhComponent } from "./optimizationPattern/rh/rh.component";
 import { FrontComponent } from "./components/front/front.component";
 import { AdminComponent } from "./components/admin/admin.component";
 import { CustomPreloadingStrategy } from "./Preloading Strategy/custom.preloading-strategy";
+import { ProductsComponent } from "./products/products.component";
 
 const routes: Route[] = [
   { path: 'login', component: LoginComponent },
   { path: 'rh', component: RhComponent },
+  { path: 'product', component: ProductsComponent },
   { path: 'todo', loadChildren: () => import('./todo/todo.module').then(m => m.TodoModule) },
   {
     path: 'cv',

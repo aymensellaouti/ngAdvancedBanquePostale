@@ -74,6 +74,12 @@
           >Rh</a
         >
         <a
+          class="nav-link"
+          [routerLink]="['product']"
+          routerLinkActive="active text-primary"
+          >Product</a
+        >
+        <a
           *ngIf="!authService.isAuthenticated()"
           class="nav-link"
           [routerLink]="['login']"
